@@ -5,10 +5,19 @@ import ResultBefore from './assets/ResultBefore';
 function App() {
 
   const [formData, setformData] = useState({
-    amout : "",
+    amount : "",
     term : "",
     rate : ""
   });
+
+
+  const resetForm = () => {
+    setformData({
+      amount : "",
+      term : "",
+      rate : ""
+    })
+  }
 
 
   const handleChangeData = (e) => {
@@ -34,7 +43,7 @@ function App() {
               {/* Container title and text */}
               <div className='flex justify-between items-center'>
                 <h1 className='text-xl text-slate700 font-bold'>Mortgage Calculator</h1>
-                <p className='text-md underline text-slate500'>Clear All</p>
+                <button onClick={resetForm} className='text-md underline text-slate500'>Clear All</button>
               </div>
 
               {/* Call the forms */}
@@ -45,7 +54,7 @@ function App() {
                       <label className=' text-slate500 font-bold text-sm' htmlFor="amount">Mortrage Amount</label>
                       <div className='flex relative'>
                         <p className='text-slate500 font-bold flex justify-center px-3 border border-slate500 border-r-0 items-center rounded-l-sm bg-slate100 absolute top-0 left-0 bottom-0'>£</p>
-                        <input name='amount' value={formData.amout} onChange={handleChangeData} type="text" className=' outline-none border border-slate500 rounded-sm py-2 w-full px-12' />
+                        <input name='amount' value={formData.amount} onChange={handleChangeData} type="text" className=' outline-none border border-slate500 rounded-sm py-2 w-full px-12' />
                       </div>
                   </div>
 
