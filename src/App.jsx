@@ -12,13 +12,11 @@ function App() {
     amount : "",
     term : "",
     rate : "",
-    raioChoice : checkTheRadio,
+    radioChoice : checkTheRadio,
   });
 
 
   // Which radio button to choose
-
-
   
   const styleTheRadio = "bg-red";
 
@@ -45,10 +43,23 @@ function App() {
   const handleChangeData = (e) => {
     
     const {name, value} = e.target;
+    const valueRadioChoice = checkTheRadio;
     setformData((prev) => ({
       ...prev,
-      [name] : value,
+      radioChoice : valueRadioChoice,
+      [name] : value,  
     }))
+
+  }
+
+
+
+  const handleSubmit = (e) => {
+    
+    e.preventDefault();
+
+    console.log(formData)
+
 
   }
   
@@ -70,7 +81,7 @@ function App() {
 
               {/* Call the forms */}
               <div className='w-full flex py-8'> 
-                <form action="" className='w-full flex flex-col gap-6'>
+                <form onSubmit={handleSubmit} className='w-full flex flex-col gap-6'>
 
                   <div className='w-full flex flex-col gap-2'>
                       <label className=' text-slate500 font-bold text-sm' htmlFor="amount">Mortrage Amount</label>
