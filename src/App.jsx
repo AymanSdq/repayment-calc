@@ -4,22 +4,41 @@ import ResultBefore from './assets/ResultBefore';
 
 function App() {
 
+
+  // Calling all the inputs in the form
   const [formData, setformData] = useState({
     amount : "",
     term : "",
-    rate : ""
+    rate : "",
   });
+
+
+  // Which radio button to choose
+  const [checkTheRadio , setCheckTheRadio ] = useState("");
+
+  // Calling the formRadio
+  const [formRadio, setFormRadio ] = useState("");
+
+  const handleRadio = (e) => {
+    
+    const callValue = e.target.value;
+
+    setFormRadio(callValue);
+
+    console.log(formRadio)
+
+  }
 
 
   const resetForm = () => {
     setformData({
       amount : "",
       term : "",
-      rate : ""
+      rate : "",
     })
   }
 
-
+  
   const handleChangeData = (e) => {
     
     const {name, value} = e.target;
@@ -82,12 +101,13 @@ function App() {
                   <div className='w-full flex flex-col gap-2  '>
                     <label className='text-slate500 font-bold text-sm' htmlFor="typemontage">Mortgage Type</label>
 
-                    <div className='flex w-full border-slate500 border rounded-sm py-2 px-4 gap-2 text-slate900 font-bold text-sm'>
-                      <input type="radio" name='typemontage' className='' />
+                    <div onClick={() => {setCheckTheRadio("typemontage")}} className='flex w-full border-slate500 border rounded-sm py-2 px-4 gap-2 text-slate900 font-bold text-sm '>
+                      <input type="radio" name='typemontage' value="repayment" checked={checkTheRadio == "typemontage"} />
                       <label htmlFor="typemontage">Repayment</label>
                     </div>
-                    <div className='flex w-full border-slate500 border rounded-sm py-2 px-4 gap-2 text-slate900 font-bold text-sm'>
-                      <input type="radio" name='typemontage' className='' />
+
+                    <div onClick={() => {setCheckTheRadio("interesst")}} className='flex w-full border-slate500 border rounded-sm py-2 px-4 gap-2 text-slate900 font-bold text-sm'>
+                      <input onClick={handleRadio} type="radio" name='typemontage' value="interesst" checked={checkTheRadio == "interesst"} />
                       <label htmlFor="typemontage">Interest Only</label>
                     </div>
 
