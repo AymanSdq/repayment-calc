@@ -5,29 +5,28 @@ import ResultBefore from './assets/ResultBefore';
 function App() {
 
 
+  const [checkTheRadio , setCheckTheRadio ] = useState("");
+
   // Calling all the inputs in the form
   const [formData, setformData] = useState({
     amount : "",
     term : "",
     rate : "",
+    raioChoice : checkTheRadio,
   });
 
 
   // Which radio button to choose
-  const [checkTheRadio , setCheckTheRadio ] = useState("");
+
 
   
   const styleTheRadio = "bg-red";
 
 
-  // Calling the formRadio
-  const [formRadio, setFormRadio ] = useState("");
-
-
-  const handleRadio = (e) => { 
+  const handleRadioChange = (e) => { 
     const callValue = e.target.value;
-    setFormRadio(callValue);
-    console.log(formRadio)
+    setCheckTheRadio(callValue);
+
   }
 
 
@@ -36,7 +35,10 @@ function App() {
       amount : "",
       term : "",
       rate : "",
-    })
+      checkTheRadio : ""  
+    });
+
+    setCheckTheRadio("");
   }
 
 
@@ -45,7 +47,7 @@ function App() {
     const {name, value} = e.target;
     setformData((prev) => ({
       ...prev,
-      [name] : value
+      [name] : value,
     }))
 
   }
@@ -103,12 +105,12 @@ function App() {
                     <label className='text-slate500 font-bold text-sm' htmlFor="typemontage">Mortgage Type</label>
 
                     <div onClick={() => {setCheckTheRadio("typemontage")}} className={` flex w-full border-slate500 border rounded-sm py-2 px-4 gap-2 text-slate900 font-bold text-sm ${checkTheRadio == "typemontage" ? "border-limeColor bg-[#fafae0]" : "" } `} >
-                      <input type="radio" name='typemontage' value="repayment" checked={checkTheRadio == "typemontage"} className={` radiobutton ${checkTheRadio == "typemontage" ? "" : "" } `} />
+                      <input onChange={handleRadioChange} type="radio" name='typemontage' value="repayment" checked={checkTheRadio == "typemontage"} className={` radiobutton ${checkTheRadio == "typemontage" ? "" : "" } `} />
                       <label htmlFor="typemontage">Repayment</label>
                     </div>
 
                     <div onClick={() => {setCheckTheRadio("interesst")}} className={` flex w-full border-slate500 border rounded-sm py-2 px-4 gap-2 text-slate900 font-bold text-sm ${checkTheRadio == "interesst" ? "border-limeColor bg-[#fafae0]" : "" } `}>
-                      <input onClick={handleRadio} type="radio" name='typemontage' value="interesst" checked={checkTheRadio == "interesst"} className={` radiobutton ${checkTheRadio == "interesst" ? "" : "" } `} />
+                      <input onChange={handleRadioChange} type="radio" name='typemontage' value="interesst" checked={checkTheRadio == "interesst"} className={` radiobutton ${checkTheRadio == "interesst" ? "" : "" } `} />
                       <label htmlFor="typemontage">Interest Only</label>
                     </div>
 
