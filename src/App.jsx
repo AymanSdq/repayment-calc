@@ -12,8 +12,10 @@ function App() {
     amount : "",
     term : "",
     rate : "",
-    radioChoice : checkTheRadio,
   });
+
+
+
 
 
   // Which radio button to choose
@@ -40,13 +42,22 @@ function App() {
   }
 
 
+  const handleError = () => {
+
+    if(formData.amount == "" || formData.term == "" || formData.rate == ""){
+
+    }else{
+
+    }
+
+  }
+
+
   const handleChangeData = (e) => {
     
     const {name, value} = e.target;
-    const valueRadioChoice = checkTheRadio;
     setformData((prev) => ({
       ...prev,
-      radioChoice : valueRadioChoice,
       [name] : value,  
     }))
 
@@ -58,7 +69,7 @@ function App() {
     
     e.preventDefault();
 
-    console.log(formData)
+    console.log(formData, checkTheRadio )
 
 
   }
