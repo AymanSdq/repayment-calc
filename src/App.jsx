@@ -69,10 +69,13 @@ function App() {
     
     e.preventDefault();
 
-    console.log(formData, checkTheRadio )
+    console.log(formData, checkTheRadio )   
 
 
   }
+
+
+  
   
 
   return (
